@@ -1,13 +1,15 @@
 name: SimpleRules
-description: Allows users to view all rukes with /rules
 author: Junkdude
 main: SimpleRules\Main
-load: POSTWORLD
-version: 2.0
-api: 
+version: 2.5
+api:
 - 1.14.0
 - 2.0.0
 commands:
-    rules:
-        usage: /rules
-        description: Shows a list of rules.
+ rules:
+  usage: /rules
+  description: Shows A List Of Rules.
+permissions:
+ simplerules.rules:
+  default: op
+  description:
