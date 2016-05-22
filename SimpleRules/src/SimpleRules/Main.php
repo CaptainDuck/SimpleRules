@@ -20,7 +20,9 @@ class Main extends PluginBase implements Listener{
     }
     public function onCommand(CommandSender $sender,Command $cmd,$label,array $args){
     	if($cmd->getName() == "rules"){//EDIT COMMAND NAME
-    		$sender->sendMessage(TEXTFORMAT::GOLD . "- " . $this->getConfig()->get("rule#1"));
+        $player = $this->getServer()->getPlayer($sender->getName());
+        if ($player->hasPermission("simplerules.rules")){
+    		    $sender->sendMessage(TEXTFORMAT::GOLD . "- " . $this->getConfig()->get("rule#1"));
             $sender->sendMessage(TEXTFORMAT::GOLD . "- " . $this->getConfig()->get("rule#2"));
             $sender->sendMessage(TEXTFORMAT::GOLD . "- " . $this->getConfig()->get("rule#3"));
             $sender->sendMessage(TEXTFORMAT::GOLD . "- " . $this->getConfig()->get("rule#4"));
@@ -31,8 +33,7 @@ class Main extends PluginBase implements Listener{
             $sender->sendMessage(TEXTFORMAT::GOLD . "- " . $this->getConfig()->get("rule#9"));
             $sender->sendMessage(TEXTFORMAT::GOLD . "- " . $this->getConfig()->get("rule#10"));
         }else{
-    	     if(!$sender instanceof Player){ // Basically this checks if the Command Sender is NOT a player
-          $sender->sendMessage(TextFormat::RED."Run Command In-Game");
+          $sender->sendMessage(TextFormat::RED."No Permssion");
 
         }
         return true;
